@@ -14,6 +14,7 @@ namespace WMS.Controllers
 {
     public class AccountController : BaseController
     {
+        //comment
         private readonly IUserService _userService;
         private readonly IInvoiceService _invoiceService;
         private readonly ILookupServices _lookupServices;
