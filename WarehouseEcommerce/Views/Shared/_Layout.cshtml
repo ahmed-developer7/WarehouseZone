@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SmartShop Electronic Shop</title>
+    <meta name="description" content="SmartShop" />
+    @Styles.Render("~/Content/app/css/styles")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    @*<link href="/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />*@
+    <link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/plugins/swiper/css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/Content/plugins/owl.carousel/owl.carousel.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/Content/plugins/owl.carousel/owl.theme.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/Content/plugins/magnific-popup/dist/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
+    @*<link href="/Content/app/css/app.css" rel="stylesheet">*@
+    @Scripts.Render("~/bundles/modernizr")
+  <style>
+      .see-all {
+          line-height: 38px;
+          width: 100%;
+          text-decoration: none;
+          padding-left: 15px;
+          cursor: pointer;
+      }
+
+  </style>
+
+
+</head>
+
+<body>
+    <div id="page-preloader" class="visible">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+    @Html.Partial("_TopHeaderPartial")
+    @Html.Partial("_HorizontalNavbarPartial")
+    <div id="common-home" class="container">
+        <div class="row">
+            @Html.Action("_VerticalNavBarPartial", "Home")
+            @RenderBody()
+        </div>
+    </div>
+    @Html.Partial("_FooterPartial")
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+ 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Content/plugins/elevatezoom/jquery.elevateZoom-3.0.8.min.js"></script>
+    <!-- blog image zoom -->
+    <script src="~/Content/plugins/lightbox2/js/lightbox.min.js"></script>
+    <link href="/Content/plugins/lightbox2/css/lightbox.min.css" rel="stylesheet" type="text/css" />
+    <!-- blog image zoom -->
+    <script src="~/Content/app/js/app.js"></script>
+    <script src="~/Content/plugins/swiper/js/swiper.min.js"></script>
+    <script src="~/Content/plugins/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="~/Scripts/javascript-searchproduct.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

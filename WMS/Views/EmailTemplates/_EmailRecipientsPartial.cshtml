@@ -1,0 +1,179 @@
+<style>
+    #emailWithaccount_chosen.chosen-container {
+        width: 74% !important;
+    }
+
+    select.multiselect-hidden {
+        visibility: hidden;
+        position: absolute;
+        max-height: 27px;
+    }
+</style>
+@if (ViewBag.CustomEmails == null)
+{
+    <div class="col-md-12">
+
+        <div class="checkbox checkbox-with-label">
+            <div class="input-group h-100 justify-content-center align-items-center">
+                <div>@Html.CheckBox("SendEmailWithAttachment")</div>
+                <div>Email Recipients</div>
+
+            </div>
+        </div>
+
+    </div>
+}
+
+@if (ViewBag.CustomEmails != null)
+{
+    <div id="divEmailNotifications" style="@(ViewBag.CustomEmails ? "" : "display:none")">
+        @using (Html.BeginForm("SaveCustomEmails", "SalesOrders", FormMethod.Post, new { @class = "frmOrders" }))
+        {
+
+            <input type="hidden" id="orderId" name="orderId" value="@ViewBag.OrdersId" />
+            <div class="input-group h-100 justify-content-center align-items-center" style="display:none">
+
+                @Html.DropDownList("AccountContactId", ViewBag.AccountContacts as IEnumerable<SelectListItem>, new { @class = "chosen-select", onchange = "AccountContactChange();" })
+
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="alert alert-info">Please add any custom recipient's email in the inputs seperated by semicolon (;)</h5>
+                    @if (Request.UrlReferrer.AbsolutePath.ToLower().Contains("purchaseorders") || (Request.UrlReferrer.AbsolutePath.ToLower().Contains("salesorders")))
+                    {
+                        <div class="input-group justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Account Email</label>
+
+                            @Html.ListBox("AccountEmailContacts", ViewBag.AccountResult as MultiSelectList, new { Multiple = "multiple", id = "emailWithaccount", size = "5", @class = "chosen-select", data_placeholder = "Choose Emails" })
+
+                        </div>
+                    }
+                    <div id="emailsection">
+                        <div class="input-group h-100 justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Recipients Email</label>
+                            <input class="form-control col-md-10" id="CustomRecipients" name="CustomRecipients" type="text" />
+                        </div>
+                        <div class="input-group h-100 justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Recipients CC</label>
+                            <input class="form-control col-md-10" id="CustomCCRecipients" name="CustomCCRecipients" type="text" />
+                        </div>
+                        <div class="input-group h-100 justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Recipients BCC</label>
+                            <input class="form-control col-md-10" id="CustomBCCRecipients" name="CustomBCCRecipients" type="text" />
+                        </div>
+                    </div>
+                    <div class="input-group h-100 justify-content-center align-items-center">
+                        <label class="control-label col-md-2">Message</label>
+                        @Html.TextArea("CustomMessage", (string)(ViewBag.purchaseorder ? "" : ViewBag.DefaultMessage), new { @rows = "3", @cols = "5", @class = "form-control col-md-10", @name = "CustomMessage" })
+                    </div>
+                </div>
+                <div class="card-footer">
+
+
+                    <div class="col-md-12">
+
+                        <input type="button" value="Cancel" class="btn btn-default btn-submit120px pull-right" onclick="ModalPopupCustomEmail.Hide();" />
+                        <input type="button" value="Send" class="btn btn-primary btn-submit120px pull-right" onclick="CustomEmailSubmit();" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        }
+
+    </div>
+}
+else
+{
+    <div id="divEmailNotifications" style="display:none">
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="alert alert-info">Please add any custom recipient's email in the inputs seperated by semicolon (;)</h5>
+                @if (Request.UrlReferrer.AbsolutePath.ToLower().Contains("purchaseorders") || (Request.UrlReferrer.AbsolutePath.ToLower().Contains("salesorders")))
+                {
+                    <div class="input-group justify-content-center align-items-center">
+                        <label class="control-label col-md-2">Account Email</label>
+
+                        @Html.ListBox("AccountEmailContacts", new MultiSelectList(ViewBag.AccountContactes), new { Multiple = "multiple", size = "5", @class = "chosen-select", id = "emailWithaccount", data_placeholder = "Choose Emails" })
+
+                    </div>
+                }
+                    <div id="emailsection">
+                        <div class="input-group h-100 justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Recipients Email</label>
+                            <input class="form-control col-md-10" id="CustomRecipients" name="CustomRecipients" type="text" />
+                        </div>
+                        <div class="input-group h-100 justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Recipients CC</label>
+                            <input class="form-control col-md-10" id="CustomCCRecipients" name="CustomCCRecipients" type="text" />
+                        </div>
+                        <div class="input-group h-100 justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Recipients BCC</label>
+                            <input class="form-control col-md-10" id="CustomBCCRecipients" name="CustomBCCRecipients" type="text" />
+                        </div>
+                        <div class="input-group h-100 justify-content-center align-items-center">
+                            <label class="control-label col-md-2">Message</label>
+                            @Html.TextArea("CustomMessage", new { @rows = "3", @cols = "5", @class = "form-control col-md-10", @name = "CustomMessage" })
+                        </div>
+                    </div>
+            </div>
+            <div class="card-footer">
+                <div class="col-md-12">
+                    <input type="button" id="btnSubmitCustomEmailCancel" value="Cancel" class="btn btn-warning btn-submit120px pull-right" />
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#btnSubmitCustomEmailCancel").on("click",function() {
+            $("#SendEmailWithAttachment").click();
+        });
+        if ($("#SendEmailWithAttachment").prop("checked")) {
+            $("#divEmailNotifications").slideDown();
+        }
+        var values = '@ViewBag.accountShip';
+        if (values) {
+            $("#SendEmailWithAttachment").prop("checked", true);
+            $("#SendEmailWithAttachment").val(true);
+            $("#divEmailNotifications").slideDown();
+        }
+
+        $("#btnSubmitCustomEmailNotification").on("click",
+            function() {
+                var data = {
+                    CustomEmailRecipients: $("#CustomRecipients").val(),
+                    CustomCCRecipients: $("#CustomCCRecipients").val(),
+                    CustomBCCRecipients: $("#CustomBCCRecipients").val(),
+                    OrderID: $("#OrderID").val()
+                };
+                var notifyUrl = '@Url.Action("OrderNotification","Order", new { id="ORDER_ID" })';
+                notifyUrl = notifyUrl.replace('ORDER_ID', data.OrderID);
+                $.post(notifyUrl,
+                    data,
+                    function() {
+                        alert('Notification sent..');
+                    });
+            });
+
+        $("#SendEmailWithAttachment").on("click",
+            function () {
+                if ($(this).prop('checked')) {
+                    $("#divEmailNotifications").slideDown();
+
+                }
+                else {
+                    $("#divEmailNotifications").slideUp();
+                }
+            });
+
+
+    });
+</script>

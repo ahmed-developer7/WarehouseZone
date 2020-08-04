@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="common-home" class="container">
+    <div class="row">
+        <div id="content" class="col-md-9 col-sm-8">
+            @Html.Partial("_SliderPartial")
+            @Html.Partial("_DeliveryInfoPartial")
+            @Html.Action("_TopProductPartial")
+            @Html.Action("_OnSalePartial")
+            @Html.Partial("_TopCategoryPartial")
+        </div>
+        </div>
+</div>

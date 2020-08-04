@@ -1,0 +1,162 @@
+﻿@using Ganedata.Core.Entities.Domain
+@using Ganedata.Core.Entities.Enums
+@model PagedList.IPagedList<ProductMaster>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ProductCategories";
+}
+<div id="content" class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Special Offers</a></li>
+    </ul>
+    @*<div class="co-head">
+            <h1>
+                <span>
+                    Special Offers
+                    <i></i>
+                </span>
+            </h1>
+        </div>*@
+    <div class="row cate-border">
+        <div class="col-md-2 col-sm-3 col-xs-5">
+            <div class="btn-group-sm">
+                <button type="button" id="list-view" class="btn listgridbtn" data-toggle="tooltip" title="List">
+                    <svg width="20px" height="20px">
+                        <use xlink:href="/Content/app/img/icons/icons.svg#clist"></use>
+                    </svg>
+                </button>
+                <button type="button" id="grid-view" class="btn listgridbtn" data-toggle="tooltip" title="Grid">
+                    <svg width="20px" height="20px">
+                        <use xlink:href="/Content/app/img/icons/icons.svg#cgrid"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        @*<div class="col-lg-4 col-md-5 col-sm-6 col-xs-7 hidden-md hidden-sm ct">
+                <a href="#" id="compare-total" class="btn btn-link">Product Compare (0)</a>
+            </div>*@
+
+        @Html.Hidden("ProductGroupId", new { @value = ViewBag.groupId ?? null })
+
+        <input type="text" id="currentsortedvalue" value="@(ViewBag.CurrentSort ?? "")" style="display:none" />
+        <input type="text" id="currentFiltervalue" value="@(ViewBag.CurrentFilter ?? "")" style="display:none" />
+        <input type="text" id="searchString" value="@(ViewBag.searchString ?? "")" style="display:none" />
+
+        <div class="col-lg-4 col-md-5 col-xs-4 col-sm-5 catesort">
+            <div class="input-group input-group-sm select-input">
+                <label class="input-group-addon" for="input-sort">Sort By:</label>
+                <input type="text" id="pagenumber" value="@Model.PageNumber" style="display:none" />
+                @Html.DropDownList("SortedValues", EnumHelper.GetSelectList(typeof(SortProductTypeEnum)), htmlAttributes: new { @class = "form-control", onchange = "searchPoducts();" })
+
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-5 col-xs-3 col-sm-4 catesort">
+            <div class="input-group input-group-sm select-input">
+                <label class="input-group-addon" for="input-limit">Show:</label>
+                @Html.DropDownList("input-limit", ViewBag.pageList as SelectList, htmlAttributes: new { @class = "form-control", onchange = "searchPoducts();" })
+
+
+                @*<select id="input-limit" class="form-control" onchange="PageSizeChanges(event);">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select>*@
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row productspm">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+
+                var data = (List<ProductFiles>)ViewBag.ProductFilesList;
+                var defaulImage = data.FirstOrDefault(u => u.ProductId == item.ProductId)?.FilePath;
+
+
+                <div class="product-layout product-list col-xs-12">
+                    <div class="product-thumb transition">
+                        <div class="image">
+                            <a href="@Url.Action("ProductDetails","Products", new {productId=item.ProductId})">
+                                <img src="@(!string.IsNullOrEmpty(defaulImage) ? ViewBag.BaseFilePath + defaulImage : ViewBag.BaseFilePath + "/UploadedFiles/Products/no-image.png")" alt="@item.Name" class="img-responsive center-block" />
+                            </a>
+                            <span class="salep">sale</span>
+                            <div class="topbutton">
+                                <button type="button" data-toggle="tooltip" title="Add to Wish List">
+                                    <svg width="20px" height="20px">
+                                        <use xlink:href="/Content/app/img/icons/icons.svg#wishlist"></use>
+                                    </svg>
+                                    <span class="hidden-xs"></span>
+                                </button>
+                                <button type="button" data-toggle="tooltip" title="Compare this Product" class="wishcom">
+                                    <svg width="20px" height="20px">
+                                        <use xlink:href="/Content/app/img/icons/icons.svg#pcom"></use>
+                                    </svg>
+                                    <span class="hidden-xs"></span>
+                                </button>
+                                <div class="bquickv" title="quickview" data-toggle="tooltip"></div>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h4><a href="@Url.Action("ProductDetails","Products", new {productId=item.ProductId})">@item.Name</a></h4>
+                            <div class="rating pull-left">
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                            </div>
+                            <p class="pricedis price text-right"><span class="price-new">$@item.MinThresholdPrice</span> <span class="price-old">$@item.SellPrice</span></p>
+                            <div class="clearfix"></div>
+                            <div class="button-group">
+                                <button type="button" onclick="cart.add('33');" class="acart">
+                                    <span>Add to Cart</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="row pagi">
+        <div class="col-sm-6 col-xs-6 text-left pagination">
+
+            @Html.PagedListPager(Model, page => Url.Action("ProductCategories", new { productGroupId = ViewBag.groupId ?? null, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, page = page, pagesize = Model.PageSize }))
+
+
+        </div>
+        <div class="col-sm-6 col-xs-6 text-right tot">
+            Showing @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) to @Model.PageSize of @(Model.PageCount)(@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber))
+
+        </div>
+    </div>
+</div>
+<script>
+    function GetSortedList(e) {
+        var sortvalue = parseInt(e.currentTarget.value);
+        var groupId = $("#ProductGroupId").val();
+        var pagenumber = $("#pagenumber").val();
+        var currentFilter = $("#currentFiltervalue").val();
+        var searchstring = $("#searchString").val();
+        var pageSize = $("#input-limit :selected").val();
+        window.location.href = "/Products/ProductCategories?productGroupId=" + groupId + "&sortOrder=" + sortvalue + "&currentFilter=" + currentFilter + "&searchString=" + searchstring + "&page=" + pagenumber + "&pagesize=" + pageSize;
+    }
+
+    function PageSizeChanges(e) {
+        var pageSize = parseInt(e.currentTarget.value);
+        var sortvalue = $("#SortedValue").val();
+        var groupId = $("#ProductGroupId").val();
+        var currentsort = $("#currentsortedvalue").val();
+        var currentFilter = $("#currentFiltervalue").val();
+        var searchstring = $("#searchString").val();
+        var pagenumber = $("#pagenumber").val();
+        window.location.href = "/Products/ProductCategories?productGroupId=" + groupId + "&sortOrder=" + currentsort + "&currentFilter=" + currentFilter + "&searchString=" + searchstring + "&page=" + pagenumber + "&pagesize=" + pageSize;
+    }
+
+</script>

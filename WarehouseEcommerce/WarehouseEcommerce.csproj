@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C205923-B232-4286-B3A7-8B79D078DB1C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WarehouseEcommerce</RootNamespace>
+    <AssemblyName>WarehouseEcommerce</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=4.1.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.4.1.3\lib\net46\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.10.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.10.3\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc, Version=5.10.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.5.10.1\lib\net46\Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ProductDetailViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\app\css\app.css" />
+    <Content Include="Content\app\css\app.min.css" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Book.svg" />
+    <Content Include="Content\app\fonts\gotham\Gotham-ExtraLight.svg" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Light.svg" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Medium.svg" />
+    <Content Include="Content\app\fonts\gotham\GothamBlack.svg" />
+    <Content Include="Content\app\fonts\gotham\GothamBold.svg" />
+    <Content Include="Content\app\img\about.jpg" />
+    <Content Include="Content\app\img\author.jpg" />
+    <Content Include="Content\app\img\blog\1.jpg" />
+    <Content Include="Content\app\img\blog\2.jpg" />
+    <Content Include="Content\app\img\blog\3.jpg" />
+    <Content Include="Content\app\img\blog\4.jpg" />
+    <Content Include="Content\app\img\brands\1.png" />
+    <Content Include="Content\app\img\brands\2.png" />
+    <Content Include="Content\app\img\brands\3.png" />
+    <Content Include="Content\app\img\brands\4.png" />
+    <Content Include="Content\app\img\brands\5.png" />
+    <Content Include="Content\app\img\brands\6.png" />
+    <Content Include="Content\app\img\brands\7.png" />
+    <Content Include="Content\app\img\brands\8.png" />
+    <Content Include="Content\app\img\brands\9.png" />
+    <Content Include="Content\app\img\home\1.png" />
+    <Content Include="Content\app\img\home\2.png" />
+    <Content Include="Content\app\img\home\3.png" />
+    <Content Include="Content\app\img\home\4.png" />
+    <Content Include="Content\app\img\icon.png" />
+    <Content Include="Content\app\img\icons\1.png" />
+    <Content Include="Content\app\img\icons\2.png" />
+    <Content Include="Content\app\img\icons\3.png" />
+    <Content Include="Content\app\img\icons\4.png" />
+    <Content Include="Content\app\img\icons\5.png" />
+    <Content Include="Content\app\img\icons\6.png" />
+    <Content Include="Content\app\img\icons\7.png" />
+    <Content Include="Content\app\img\icons\8.png" />
+    <Content Include="Content\app\img\icons\9.png" />
+    <Content Include="Content\app\img\icons\email.png" />
+    <Content Include="Content\app\img\icons\icons.svg" />
+    <Content Include="Content\app\img\icons\location.png" />
+    <Content Include="Content\app\img\icons\phone.png" />
+    <Content Include="Content\app\img\icons\user.png" />
+    <Content Include="Content\app\img\language\ar.png" />
+    <Content Include="Content\app\img\language\en-gb.png" />
+    <Content Include="Content\app\img\left-banner.jpg" />
+    <Content Include="Content\app\img\left1-273x400.jpg" />
+    <Content Include="Content\app\img\logo.png" />
+    <Content Include="Content\app\img\newsletter.png" />
+    <Content Include="Content\app\img\popup.jpg" />
+    <Content Include="Content\app\img\product.jpg" />
+    <Content Include="Content\app\img\product\Apple-iPhone-hover.jpg" />
+    <Content Include="Content\app\img\product\Apple-iPhone.jpg" />
+    <Content Include="Content\app\img\product\Canon-CS100-Connect-Station-hover.jpg" />
+    <Content Include="Content\app\img\product\Canon-CS100-Connect-Station.jpg" />
+    <Content Include="Content\app\img\product\Canon-EOS-1300D-DSLR-Camera-Body-with-Single-Lens-1.jpg" />
+    <Content Include="Content\app\img\product\Canon-EOS-1300D-DSLR-Camera-Body-with-Single-Lens-2.jpg" />
+    <Content Include="Content\app\img\product\Canon-EOS-1300D-DSLR-Camera-Body-with-Single-Lens-3.jpg" />
+    <Content Include="Content\app\img\product\Canon-EOS-1300D-DSLR-Camera-Body-with-Single-Lens-hover.jpg" />
+    <Content Include="Content\app\img\product\Canon-EOS-1300D-DSLR-Camera-Body-with-Single-Lens.jpg" />
+    <Content Include="Content\app\img\product\Microware-CHARGING-DOCK-LED-Light-hover.jpg" />
+    <Content Include="Content\app\img\product\Microware-CHARGING-DOCK-LED-Light.jpg" />
+    <Content Include="Content\app\img\slider\1.jpg" />
+    <Content Include="Content\app\img\slider\2.jpg" />
+    <Content Include="Content\app\js\app.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\plugins\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\plugins\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\plugins\bootstrap\js\npm.js" />
+    <Content Include="Content\plugins\elevatezoom\images\large\image1.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\large\image2.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\large\image3.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\large\image4.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\small\image1.png" />
+    <Content Include="Content\plugins\elevatezoom\images\small\image2.png" />
+    <Content Include="Content\plugins\elevatezoom\images\small\image3.png" />
+    <Content Include="Content\plugins\elevatezoom\images\small\image4.png" />
+    <Content Include="Content\plugins\elevatezoom\images\thumb\image1.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\thumb\image2.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\thumb\image3.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\thumb\image4.jpg" />
+    <Content Include="Content\plugins\elevatezoom\images\window-positions.png" />
+    <Content Include="Content\plugins\elevatezoom\jquery-1.8.3.min.js" />
+    <Content Include="Content\plugins\elevatezoom\jquery.elevateZoom-3.0.8.min.js" />
+    <Content Include="Content\plugins\elevatezoom\jquery.elevatezoom.js" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\plugins\jquery\jquery-2.1.1.min.js" />
+    <Content Include="Content\plugins\lightbox2\css\lightbox.css" />
+    <Content Include="Content\plugins\lightbox2\css\lightbox.min.css" />
+    <Content Include="Content\plugins\lightbox2\images\close.png" />
+    <Content Include="Content\plugins\lightbox2\images\loading.gif" />
+    <Content Include="Content\plugins\lightbox2\images\next.png" />
+    <Content Include="Content\plugins\lightbox2\images\prev.png" />
+    <Content Include="Content\plugins\lightbox2\js\lightbox-plus-jquery.js" />
+    <Content Include="Content\plugins\lightbox2\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Content\plugins\lightbox2\js\lightbox.js" />
+    <Content Include="Content\plugins\lightbox2\js\lightbox.min.js" />
+    <Content Include="Content\plugins\magnific-popup\dist\jquery.magnific-popup.js" />
+    <Content Include="Content\plugins\magnific-popup\dist\jquery.magnific-popup.min.js" />
+    <Content Include="Content\plugins\magnific-popup\dist\magnific-popup.css" />
+    <Content Include="Content\plugins\magnific-popup\src\js\ajax.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\core.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\fastclick.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\gallery.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\iframe.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\image.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\inline.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\retina.js" />
+    <Content Include="Content\plugins\magnific-popup\src\js\zoom.js" />
+    <Content Include="Content\plugins\owl.carousel\AjaxLoader.gif" />
+    <Content Include="Content\plugins\owl.carousel\grabbing.png" />
+    <Content Include="Content\plugins\owl.carousel\owl.carousel.css" />
+    <Content Include="Content\plugins\owl.carousel\owl.carousel.js" />
+    <Content Include="Content\plugins\owl.carousel\owl.carousel.min.js" />
+    <Content Include="Content\plugins\owl.carousel\owl.theme.css" />
+    <Content Include="Content\plugins\owl.carousel\owl.transitions.css" />
+    <Content Include="Content\plugins\swiper\css\swiper.css" />
+    <Content Include="Content\plugins\swiper\css\swiper.min.css" />
+    <Content Include="Content\plugins\swiper\js\swiper.esm.bundle.js" />
+    <Content Include="Content\plugins\swiper\js\swiper.esm.js" />
+    <Content Include="Content\plugins\swiper\js\swiper.js" />
+    <Content Include="Content\plugins\swiper\js\swiper.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Book.eot" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Book.otf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Book.ttf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Book.woff" />
+    <Content Include="Content\app\fonts\gotham\Gotham-ExtraLight.eot" />
+    <Content Include="Content\app\fonts\gotham\Gotham-ExtraLight.otf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-ExtraLight.ttf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-ExtraLight.woff" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Light.eot" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Light.otf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Light.ttf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Light.woff" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Medium %281%29.woff" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Medium.eot" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Medium.otf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Medium.ttf" />
+    <Content Include="Content\app\fonts\gotham\Gotham-Medium.woff" />
+    <Content Include="Content\app\fonts\gotham\GothamBlack.eot" />
+    <Content Include="Content\app\fonts\gotham\GothamBlack.ttf" />
+    <Content Include="Content\app\fonts\gotham\GothamBlack.woff" />
+    <Content Include="Content\app\fonts\gotham\GothamBold.eot" />
+    <Content Include="Content\app\fonts\gotham\GothamBold.ttf" />
+    <Content Include="Content\app\fonts\gotham\GothamBold.woff" />
+    <Content Include="Content\app\img\blog\Thumbs.db" />
+    <Content Include="Content\app\img\Thumbs.db" />
+    <Content Include="Content\plugins\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\plugins\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\plugins\elevatezoom\elevatezoom.jquery.json" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\plugins\lightbox2\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Content\plugins\lightbox2\js\lightbox.min.map" />
+    <Content Include="Content\plugins\magnific-popup\src\css\main.scss" />
+    <Content Include="Content\plugins\magnific-popup\src\css\_settings.scss" />
+    <Content Include="Content\plugins\swiper\js\swiper.min.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\javascript-searchproduct.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\logout.cshtml" />
+    <Content Include="Views\Shared\_TopHeaderPartial.cshtml" />
+    <Content Include="Views\Shared\_HorizontalNavbarPartial.cshtml" />
+    <Content Include="Views\Shared\_VerticalNavBarPartial.cshtml" />
+    <Content Include="Views\Shared\_TopProductPartial.cshtml" />
+    <Content Include="Views\Shared\_OnSalePartial.cshtml" />
+    <Content Include="Views\Shared\_TopCategoryPartial.cshtml" />
+    <Content Include="Views\Shared\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Products\ProductCategories.cshtml" />
+    <Content Include="Views\Products\ProductDetails.cshtml" />
+    <Content Include="Views\Shared\_DeliveryInfoPartial.cshtml" />
+    <Content Include="Views\Shared\_BestSellerPartial.cshtml" />
+    <Content Include="Views\Shared\_SpecialProductPartial.cshtml" />
+    <Content Include="Views\Shared\_NewsLetterPartial.cshtml" />
+    <Content Include="Views\Shared\_ImageBlockPartial.cshtml" />
+    <Content Include="Views\Shared\_TopProductBannerPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\themes\base\images\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GaneEcommerce.Data\Ganedata.Core.Data.csproj">
+      <Project>{ca155fc7-78e3-425c-a8b3-9f8bc17f1218}</Project>
+      <Name>Ganedata.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GaneEcommerce.Entities\Ganedata.Core.Entities.csproj">
+      <Project>{706892f4-49d7-4efa-a414-44b5e1d74286}</Project>
+      <Name>Ganedata.Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GaneEcommerce.Services\Ganedata.Core.Services.csproj">
+      <Project>{2a72dfbb-815c-4aa0-b132-268c8468f927}</Project>
+      <Name>Ganedata.Core.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61856</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8006</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
